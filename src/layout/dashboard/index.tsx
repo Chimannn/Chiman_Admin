@@ -10,6 +10,7 @@ import {
 import { Button, Layout, Menu, theme } from "antd";
 import Breadcrumb from "../components/bread-crumb";
 import SliderLogo from "../components/slider-logo";
+import "./index.scss";
 
 const { Header, Sider, Content } = Layout;
 const App: React.FC = () => {
@@ -21,7 +22,7 @@ const App: React.FC = () => {
     return (
         <Layout style={{ height: "100%" }}>
             <Sider trigger={null} collapsible collapsed={collapsed}>
-                <SliderLogo />
+                <SliderLogo collapsed={collapsed} />
                 <Menu
                     theme="dark"
                     mode="inline"
@@ -46,7 +47,10 @@ const App: React.FC = () => {
                 />
             </Sider>
             <Layout>
-                <Header style={{ padding: 0, background: colorBgContainer }}>
+                <Header
+                    className="Header"
+                    style={{ padding: "10px", background: colorBgContainer }}
+                >
                     <Breadcrumb
                         items={[
                             {
@@ -68,6 +72,7 @@ const App: React.FC = () => {
                         ]}
                     />
                     <Button
+                        className="collapse-btn"
                         type="text"
                         icon={
                             collapsed ? (
@@ -77,11 +82,6 @@ const App: React.FC = () => {
                             )
                         }
                         onClick={() => setCollapsed(!collapsed)}
-                        style={{
-                            fontSize: "16px",
-                            width: 64,
-                            height: 64,
-                        }}
                     />
                 </Header>
                 <Content
