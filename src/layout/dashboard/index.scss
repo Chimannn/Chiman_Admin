@@ -1,11 +1,21 @@
 .Header {
     position: relative;
+    padding: 20px;
+    padding-left: 40px;
     .collapse-btn {
         position: absolute;
-        top: 50px;
-        left: -10px;
+        top: 7px;
+        left: -25px;
         font-size: 18px;
         width: 50px;
         height: 50px;
+        .collapse-icon {
+            font-size: 27px;
+        }
     }
+}
+.Sider {
+    max-width: 300px;
+    min-width: 250px;
+    width: 300px;
 }

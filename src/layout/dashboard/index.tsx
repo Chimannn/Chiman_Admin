@@ -1,55 +1,73 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
 import {
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    UploadOutlined,
-    VideoCameraOutlined,
+    RightSquareTwoTone,
+    LeftSquareTwoTone,
+    SettingOutlined,
     HomeOutlined,
     UserOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 import Breadcrumb from "../components/bread-crumb";
-import SliderLogo from "../components/slider-logo";
+import SideLogo from "../components/side-logo";
 import "./index.scss";
+import { MenuItem } from "/types/sider";
 
 const { Header, Sider, Content } = Layout;
 const App: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const [menuData, setMenuData] = useState<MenuItem[]>([]);
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
 
+    const mockData: MenuItem[] = [
+        {
+            key: "1",
+            label: "Dashboard",
+            path: "/dashboard",
+            icon: <HomeOutlined />,
+            children: [
+                {
+                    key: "1-1",
+                    label: "Workbench",
+                    path: "/dashboard/workbench",
+                },
+                { key: "1-2", label: "Analysis", path: "/dashboard/analysis" },
+            ],
+        },
+        {
+            key: "2",
+            label: "Settings",
+            path: "/settings",
+            icon: <SettingOutlined />,
+            children: [
+                { key: "2-1", label: "Profile", path: "/settings/profile" },
+                { key: "2-2", label: "Security", path: "/settings/security" },
+            ],
+        },
+    ];
+
+    useEffect(() => {
+        setMenuData(mockData);
+    }, []);
+
     return (
         <Layout style={{ height: "100%" }}>
-            <Sider trigger={null} collapsible collapsed={collapsed}>
-                <SliderLogo collapsed={collapsed} />
+            <Sider width={260} trigger={null} collapsible collapsed={collapsed}>
+                <SideLogo collapsed={collapsed} />
                 <Menu
                     theme="dark"
                     mode="inline"
-                    defaultSelectedKeys={["1"]}
-                    items={[
-                        {
-                            key: "1",
-                            icon: <UserOutlined />,
-                            label: "nav 1",
-                        },
-                        {
-                            key: "2",
-                            icon: <VideoCameraOutlined />,
-                            label: "nav 2",
-                        },
-                        {
-                            key: "3",
-                            icon: <UploadOutlined />,
-                            label: "nav 3",
-                        },
-                    ]}
+                    defaultSelectedKeys={["1-1"]}
+                    defaultOpenKeys={["1"]}
+                    items={menuData}
                 />
             </Sider>
             <Layout>
                 <Header
                     className="Header"
-                    style={{ padding: "10px", background: colorBgContainer }}
+                    style={{ background: colorBgContainer }}
                 >
                     <Breadcrumb
                         items={[
@@ -76,9 +94,15 @@ const App: React.FC = () => {
                         type="text"
                         icon={
                             collapsed ? (
-                                <MenuUnfoldOutlined />
+                                <RightSquareTwoTone
+                                    className="collapse-icon"
+                                    twoToneColor="#5ac6f7"
+                                />
                             ) : (
-                                <MenuFoldOutlined />
+                                <LeftSquareTwoTone
+                                    className="collapse-icon"
+                                    twoToneColor="#5ac6f7"
+                                />
                             )
                         }
                         onClick={() => setCollapsed(!collapsed)}
@@ -86,14 +110,13 @@ const App: React.FC = () => {
                 </Header>
                 <Content
                     style={{
-                        margin: "24px 16px",
                         padding: 24,
                         minHeight: 280,
                         background: colorBgContainer,
                         borderRadius: borderRadiusLG,
                     }}
                 >
-                    Content
+                    <Outlet />
                 </Content>
             </Layout>
         </Layout>

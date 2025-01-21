@@ -1,11 +1,11 @@
-.slider-logo {
+.side-logo {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     margin: 20px auto;
     height: 45px;
-    .slider-title {
+    .side-title {
         color: aliceblue;
         font-size: 18px;
         font-weight: 600;
@@ -15,6 +15,7 @@
         width: 50px;
         height: 100%;
         animation: rotate 5s linear infinite;
+        margin-right: 10px;
     }
 }
 
