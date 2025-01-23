@@ -1,7 +1,7 @@
-import src from "../../assets/react.svg";
-import "./side-logo.scss";
+import src from "@/assets/react.svg";
+import "./index.scss";
 
-const sliderLogo = (props) => {
+const SideLogo = (props) => {
     return (
         <div className="side-logo">
             <img src={src} alt="image" />
@@ -21,4 +21,4 @@ const sliderLogo = (props) => {
     );
 };
 
-export default sliderLogo;
+export default SideLogo;
