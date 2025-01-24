@@ -5,20 +5,21 @@ const breadCrumb = () => (
     <Breadcrumb
         items={[
             {
-                href: "",
+                href: "/",
                 title: <HomeOutlined />,
             },
             {
-                href: "",
+                href: "/dashboard",
                 title: (
                     <>
                         <UserOutlined />
-                        <span>Application List</span>
+                        <span>Dashboard</span>
                     </>
                 ),
             },
             {
-                title: "Application",
+                href: "/dashboard/workbench",
+                title: "Workbench",
             },
         ]}
     />

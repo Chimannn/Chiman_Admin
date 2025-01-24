@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import React from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import {
     RightSquareTwoTone,
     LeftSquareTwoTone,
@@ -7,17 +7,30 @@ import {
     UserOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, theme } from "antd";
-import Breadcrumb from "../components/bread-crumb";
+import { ErrorBoundary } from "react-error-boundary";
 import "./index.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleCollapsed } from "@/store/collapsed/collapsedSlice";
+
+import Breadcrumb from "../components/bread-crumb";
 import SideMenu from "./sider-menu";
-import { menuData } from "@/router";
+import generateMenuItems from "./sider-menu/component/hooks/useRenderMenuData";
+import Permissions from "@/router/tempPermissionJson";
 
 const { Header, Content } = Layout;
 const App: React.FC = () => {
-    const [collapsed, setCollapsed] = useState(false);
+    const collapsed = useSelector((state: object) => state.collapsed.collapsed);
+    const dispatch = useDispatch();
+    const location = useLocation();
+
+    const menuData = generateMenuItems(Permissions, collapsed);
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
+
+    const clickCollapse = () => {
+        dispatch(toggleCollapsed());
+    };
 
     return (
         <Layout style={{ height: "100%" }}>
@@ -63,7 +76,7 @@ const App: React.FC = () => {
                                 />
                             )
                         }
-                        onClick={() => setCollapsed(!collapsed)}
+                        onClick={clickCollapse}
                     />
                 </Header>
                 <Content
@@ -74,7 +87,12 @@ const App: React.FC = () => {
                         borderRadius: borderRadiusLG,
                     }}
                 >
-                    <Outlet />
+                    <ErrorBoundary
+                        fallback={<div>404 Not Found !!!</div>}
+                        resetKeys={[location]}
+                    >
+                        <Outlet />
+                    </ErrorBoundary>
                 </Content>
             </Layout>
         </Layout>

@@ -6,7 +6,7 @@ const Permissions = [
         name: "Dashboard",
         icon: "HomeOutlined",
         type: 0,
-        route: "dashboard",
+        route: "/dashboard",
         order: 1,
         children: [
             {
@@ -36,7 +36,7 @@ const Permissions = [
         name: "Management",
         icon: "BarChartOutlined",
         type: 0,
-        route: "management",
+        route: "/management",
         order: 2,
         children: [
             {
@@ -132,7 +132,7 @@ const Permissions = [
         name: "Components",
         icon: "AreaChartOutlined",
         type: 0,
-        route: "components",
+        route: "/components",
         order: 3,
         children: [
             {
@@ -225,7 +225,7 @@ const Permissions = [
         name: "functions",
         icon: "RadarChartOutlined",
         type: 0,
-        route: "functions",
+        route: "/functions",
         order: 4,
         children: [
             {
@@ -255,7 +255,7 @@ const Permissions = [
         name: "Menu Level",
         icon: "RiseOutlined",
         type: 0,
-        route: "menu-level",
+        route: "/menu-level",
         order: 5,
         children: [
             {
@@ -326,7 +326,7 @@ const Permissions = [
         name: "Error",
         icon: "WindowsOutlined",
         type: 0,
-        route: "error",
+        route: "/error",
         order: 6,
         children: [
             {
@@ -365,7 +365,7 @@ const Permissions = [
         name: "Calendar",
         icon: "CalendarOutlined",
         type: 1,
-        route: "calendar",
+        route: "/calendar",
         component: "/sys/others/calendar/index.tsx",
     },
     {
@@ -375,7 +375,7 @@ const Permissions = [
         name: "kanban",
         icon: "CloseSquareOutlined",
         type: 1,
-        route: "kanban",
+        route: "/kanban",
         component: "/sys/others/kanban/index.tsx",
     },
     {
@@ -385,7 +385,7 @@ const Permissions = [
         name: "Disabled",
         icon: "FundOutlined",
         type: 1,
-        route: "disabled",
+        route: "/disabled",
         status: 0,
         component: "/sys/others/calendar/index.tsx",
     },
@@ -396,7 +396,7 @@ const Permissions = [
         name: "Label",
         icon: "CloseSquareOutlined",
         type: 1,
-        route: "label",
+        route: "/label",
         newFeature: true,
         component: "/sys/others/blank.tsx",
     },
@@ -407,7 +407,7 @@ const Permissions = [
         name: "Frame",
         icon: "AlignCenterOutlined",
         type: 0,
-        route: "frame",
+        route: "/frame",
         children: [
             {
                 id: "9884486809510480",
@@ -439,7 +439,7 @@ const Permissions = [
         name: "Disabled",
         icon: "ScissorOutlined",
         type: 1,
-        route: "blank",
+        route: "/blank",
         component: "/sys/others/blank.tsx",
     },
 ];

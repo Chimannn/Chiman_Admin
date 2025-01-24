@@ -1,7 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { createBrowserRouter, Link, Navigate, Outlet } from "react-router-dom";
-import { ErrorBoundary } from "react-error-boundary";
-import Icon from "@/layout/dashboard/sider-menu/component/Icon";
+import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import Layout from "@/Layout/dashboard";
 import { CircleLoading } from "@/components/loading";
 import Permissions from "./tempPermissionJson";
@@ -16,11 +14,9 @@ const loadComponent = (componentPath: string) => {
         const Component = lazy(loadComponentFromPath(componentPath));
 
         return (
-            <ErrorBoundary fallback={<div>404 Not Found!</div>}>
-                <Suspense fallback={<CircleLoading />}>
-                    <Component />
-                </Suspense>
-            </ErrorBoundary>
+            <Suspense fallback={<CircleLoading />}>
+                <Component />
+            </Suspense>
         );
     } catch (error) {
         console.error(`Component ${componentPath} not found`, error);
@@ -28,38 +24,46 @@ const loadComponent = (componentPath: string) => {
     }
 };
 
-// 递归生成菜单项
-const generateMenuItems = (menuData) => {
-    return menuData
-        .filter((item) => !item.hide) // 过滤掉隐藏的菜单项
-        .map((item) => ({
-            key: item.route,
-            label: (
-                <Link to={item.route}>
-                    {item.icon && <Icon icon={item.icon} />} {item.name}
-                </Link>
-            ),
-            children: item.children
-                ? generateMenuItems(item.children)
-                : undefined,
-        }));
-};
-
 const generateRoutes = (menuData) => {
     return menuData
         .filter((item) => !item.hide) // 过滤掉隐藏的路由
         .map((item) => ({
             path: item.route,
-            element: !item.parentId ? (
-                <Outlet />
-            ) : (
-                loadComponent(item.component || "")
-            ),
+            element:
+                item.children && item.children.length > 0 ? (
+                    <Outlet />
+                ) : (
+                    loadComponent(item.component || "")
+                ),
             children: item.children ? generateRoutes(item.children) : undefined,
         }));
 };
 
+const addDefaultRoutes = (routes) => {
+    return routes.map((item) => {
+        const defaultRoute =
+            item.children && item.children.length > 0
+                ? {
+                      index: true, // 使用 index 属性作为默认子路由
+                      element: <Navigate to={item.children[0].path} replace />,
+                  }
+                : null;
+
+        return {
+            ...item,
+            children: item.children
+                ? [defaultRoute, ...addDefaultRoutes(item.children)].filter(
+                      Boolean
+                  )
+                : undefined,
+        };
+    });
+};
 const subRoutes = generateRoutes(Permissions);
+
+console.log(subRoutes);
+
+console.log(addDefaultRoutes(subRoutes));
 
 const routes = [
     {
@@ -80,6 +84,4 @@ const routes = [
 ];
 
 const router = createBrowserRouter(routes);
-const menuData = generateMenuItems(Permissions);
 export default router;
-export { menuData };
