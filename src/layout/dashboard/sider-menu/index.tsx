@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate, useMatches, useLocation } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import "./index.scss";
@@ -6,13 +6,13 @@ import SideLogo from "./component/side-logo";
 
 const { Sider } = Layout;
 const SideMenu: React.FC = ({ menuData, collapsed }) => {
-    const [selectedKeys, setSelectedKeys] = useState<string[]>([
-        "/dashboard/workbench",
-    ]);
     const [openKeys, setOpenKeys] = useState<string[]>(["dashboard"]);
+
     const navigate = useNavigate();
     const matches = useMatches();
     const location = useLocation();
+    const pathname = location.pathname;
+    const selectedKeys = useMemo(() => [pathname], [pathname]);
 
     useEffect(() => {
         if (!collapsed) {
@@ -28,7 +28,6 @@ const SideMenu: React.FC = ({ menuData, collapsed }) => {
     }, [collapsed, matches, location]);
 
     const onClick = (e) => {
-        setSelectedKeys([e.key]);
         navigate(e.key);
     };
     const handleOpenChange = (keys) => {

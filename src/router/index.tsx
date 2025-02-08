@@ -27,43 +27,36 @@ const loadComponent = (componentPath: string) => {
 const generateRoutes = (menuData) => {
     return menuData
         .filter((item) => !item.hide) // 过滤掉隐藏的路由
-        .map((item) => ({
-            path: item.route,
-            element:
-                item.children && item.children.length > 0 ? (
-                    <Outlet />
-                ) : (
-                    loadComponent(item.component || "")
-                ),
-            children: item.children ? generateRoutes(item.children) : undefined,
-        }));
-};
+        .map((item) => {
+            const defaultRoute =
+                item.children && item.children.length > 0
+                    ? {
+                          index: true,
+                          element: (
+                              <Navigate to={item.children[0].route} replace />
+                          ),
+                      }
+                    : null;
 
-const addDefaultRoutes = (routes) => {
-    return routes.map((item) => {
-        const defaultRoute =
-            item.children && item.children.length > 0
-                ? {
-                      index: true, // 使用 index 属性作为默认子路由
-                      element: <Navigate to={item.children[0].path} replace />,
-                  }
-                : null;
-
-        return {
-            ...item,
-            children: item.children
-                ? [defaultRoute, ...addDefaultRoutes(item.children)].filter(
-                      Boolean
-                  )
-                : undefined,
-        };
-    });
+            return {
+                path: item.route,
+                name: item.name,
+                icon: item.icon,
+                hide: item.hide || false,
+                element:
+                    item.children && item.children.length > 0 ? (
+                        <Outlet />
+                    ) : (
+                        loadComponent(item.component || "")
+                    ),
+                children:
+                    item.children && item.children.length > 0
+                        ? [defaultRoute, ...generateRoutes(item.children)]
+                        : undefined,
+            };
+        });
 };
 const subRoutes = generateRoutes(Permissions);
-
-console.log(subRoutes);
-
-console.log(addDefaultRoutes(subRoutes));
 
 const routes = [
     {
@@ -72,7 +65,7 @@ const routes = [
         children: [
             {
                 index: true,
-                element: <Navigate to={"/dashboard/workbench"} replace />,
+                element: <Navigate to={"/dashboard"} replace />,
             },
             ...subRoutes,
         ],
@@ -84,4 +77,5 @@ const routes = [
 ];
 
 const router = createBrowserRouter(routes);
+export { subRoutes };
 export default router;

@@ -2,6 +2,8 @@
     position: relative;
     padding: 20px;
     padding-left: 40px;
+    display: flex;
+    justify-content: space-between;
     .collapse-btn {
         position: absolute;
         top: 7px;
@@ -12,6 +14,10 @@
         .collapse-icon {
             font-size: 27px;
         }
+    }
+    .Header-right {
+        display: flex;
+        align-items: center;
     }
 }
 .Sider {

@@ -1,11 +1,6 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import {
-    RightSquareTwoTone,
-    LeftSquareTwoTone,
-    HomeOutlined,
-    UserOutlined,
-} from "@ant-design/icons";
+import { RightSquareTwoTone, LeftSquareTwoTone } from "@ant-design/icons";
 import { Button, Layout, theme } from "antd";
 import { ErrorBoundary } from "react-error-boundary";
 import "./index.scss";
@@ -13,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleCollapsed } from "@/store/collapsed/collapsedSlice";
 
 import Breadcrumb from "../components/bread-crumb";
+import Notice from "../components/notice";
 import SideMenu from "./sider-menu";
 import generateMenuItems from "./sider-menu/component/hooks/useRenderMenuData";
 import Permissions from "@/router/tempPermissionJson";
@@ -24,6 +20,7 @@ const App: React.FC = () => {
     const location = useLocation();
 
     const menuData = generateMenuItems(Permissions, collapsed);
+
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
@@ -40,26 +37,7 @@ const App: React.FC = () => {
                     className="Header"
                     style={{ background: colorBgContainer }}
                 >
-                    <Breadcrumb
-                        items={[
-                            {
-                                href: "",
-                                title: <HomeOutlined />,
-                            },
-                            {
-                                href: "",
-                                title: (
-                                    <>
-                                        <UserOutlined />
-                                        <span>Application List</span>
-                                    </>
-                                ),
-                            },
-                            {
-                                title: "Application",
-                            },
-                        ]}
-                    />
+                    <Breadcrumb />
                     <Button
                         className="collapse-btn"
                         type="text"
@@ -78,6 +56,9 @@ const App: React.FC = () => {
                         }
                         onClick={clickCollapse}
                     />
+                    <div className="Header-right">
+                        <Notice />
+                    </div>
                 </Header>
                 <Content
                     style={{
