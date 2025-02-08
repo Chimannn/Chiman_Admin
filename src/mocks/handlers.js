@@ -23,4 +23,24 @@ export const handlers = [
             data: data,
         });
     }),
+    http.post("/api/auth/login", async ({ request }) => {
+        const req = await request.json();
+        const { username, password } = req;
+
+        if (username === "admin" && password === "admin") {
+            const data = {
+                username: username,
+                token: faker.string.uuid(),
+            };
+            return HttpResponse.json({
+                status: 0,
+                data: data,
+            });
+        } else {
+            return HttpResponse.json({
+                status: 0,
+                data: { msg: "Invalid username or password" },
+            });
+        }
+    }),
 ];
