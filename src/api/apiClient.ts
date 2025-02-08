@@ -4,7 +4,7 @@ import axios, {
     type AxiosResponse,
 } from "axios";
 
-// import userStore from "@/store/userStore";
+import { logout } from "@/store/auth/authSlice";
 
 import { toast } from "sonner";
 import type { Result } from "@/types/api";
@@ -57,9 +57,7 @@ axiosInstance.interceptors.response.use(
 
         const status = response?.status;
         if (status === 401) {
-            console.log(401);
-
-            // userStore.getState().actions.clearUserInfoAndToken();
+            logout();
         }
         return Promise.reject(error);
     }

@@ -1,21 +1,12 @@
-// const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
-// import { Navigate } from "react-router-dom";
-// const token = useUserToken();
-
-// // 判断用户是否有权限
-// if (token.accessToken) {
-//     // 如果有授权，则跳转到首页
-//     return <Navigate to={HOMEPAGE} replace />;
-// }
-
-// src/components/Login.tsx
-import React from "react";
-import { useDispatch } from "react-redux";
-// import { useAppDispatch } from "../app/hooks";
+const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
+import { Navigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { login } from "@/store/auth/authSlice";
 import "./login.scss";
 import type { FormProps } from "antd";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, message } from "antd";
 
 type FieldType = {
     username?: string;
@@ -24,14 +15,30 @@ type FieldType = {
 };
 
 const Login: React.FC = () => {
-    const [form] = Form.useForm();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const userToken = useSelector((state) => state.auth.userToken);
+    const [loading, setLoading] = useState(false);
+    const [form] = Form.useForm();
+
+    if (userToken) {
+        return <Navigate to={HOMEPAGE} replace />;
+    }
+
     const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
         try {
-            await dispatch(login(values)).unwrap();
-            console.log("Login successful");
+            setLoading(true);
+            const res = await dispatch(login(values)).unwrap();
+            setLoading(false);
+            if (res?.message === "success") {
+                message.success("Success");
+                navigate("/dashboard");
+            } else {
+                message.error(`Failed：${res?.message || "unknown error."}`);
+            }
         } catch (error) {
-            console.error("Failed to login:", error);
+            message.error("Failed to login:", error);
         }
     };
 
@@ -77,11 +84,16 @@ const Login: React.FC = () => {
                         style={{ display: "flex" }}
                         label={null}
                     >
-                        <Checkbox>Remember me</Checkbox>
+                        <Checkbox>remember me</Checkbox>
                     </Form.Item>
 
                     <Form.Item label={null}>
-                        <Button type="primary" htmlType="submit" block>
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            block
+                            loading={loading}
+                        >
                             Submit
                         </Button>
                     </Form.Item>

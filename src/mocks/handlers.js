@@ -29,6 +29,7 @@ export const handlers = [
 
         if (username === "admin" && password === "admin") {
             const data = {
+                message: "success",
                 username: username,
                 token: faker.string.uuid(),
             };
@@ -39,7 +40,7 @@ export const handlers = [
         } else {
             return HttpResponse.json({
                 status: 0,
-                data: { msg: "Invalid username or password" },
+                data: { message: "Invalid username or password" },
             });
         }
     }),

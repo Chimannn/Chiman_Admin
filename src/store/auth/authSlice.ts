@@ -26,13 +26,13 @@ export const login = createAsyncThunk(
 );
 
 interface AuthState {
-    token: string | null;
+    userToken: string | null;
     loading: boolean;
     error: string | null;
 }
 
 const initialState: AuthState = {
-    token: localStorage.getItem("token") || null,
+    userToken: localStorage.getItem("userToken") || null,
     loading: false,
     error: null,
 };
@@ -42,23 +42,26 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         logout: (state) => {
-            state.token = null;
-            localStorage.removeItem("token");
+            state.userToken = null;
+            localStorage.removeItem("userToken");
         },
     },
     extraReducers: (builder) => {
         builder
             .addCase(login.pending, (state) => {
-                state.loading = true;
                 state.error = null;
             })
             .addCase(login.fulfilled, (state, action) => {
-                state.loading = false;
-                state.token = action.payload.token;
-                localStorage.setItem("token", action.payload.token);
+                //区分返回状态
+                if (action.payload.message === "success") {
+                    state.userToken = action.payload.token;
+                    localStorage.setItem("userToken", action.payload.token);
+                } else {
+                    localStorage.removeItem("userToken");
+                    state.error = action.payload.message || "Failed to login.";
+                }
             })
             .addCase(login.rejected, (state, action) => {
-                state.loading = false;
                 state.error = action.error.message || "Failed to login.";
             });
     },
