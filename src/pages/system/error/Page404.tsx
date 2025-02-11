@@ -1,5 +1,11 @@
+import ProtectedRoute from "@/router/components/protectedRoute";
+
 function Page404() {
-    return <div>404.</div>;
+    return (
+        <ProtectedRoute>
+            <div>404. ---Page404.</div>
+        </ProtectedRoute>
+    );
 }
 
 export default Page404;

@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import apiClient from "@/api/apiClient";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 // 创建异步Thunk用于登录操作
 export const login = createAsyncThunk(
@@ -25,14 +27,21 @@ export const login = createAsyncThunk(
     }
 );
 
+const persistConfig = {
+    key: "auth",
+    storage,
+};
+
 interface AuthState {
     userToken: string | null;
+    user: Obejct | null;
     loading: boolean;
     error: string | null;
 }
 
 const initialState: AuthState = {
     userToken: localStorage.getItem("userToken") || null,
+    user: null,
     loading: false,
     error: null,
 };
@@ -43,7 +52,8 @@ const authSlice = createSlice({
     reducers: {
         logout: (state) => {
             state.userToken = null;
-            localStorage.removeItem("userToken");
+            state.user = null;
+            state.error = null;
         },
     },
     extraReducers: (builder) => {
@@ -53,11 +63,12 @@ const authSlice = createSlice({
             })
             .addCase(login.fulfilled, (state, action) => {
                 //区分返回状态
-                if (action.payload.message === "success") {
-                    state.userToken = action.payload.token;
-                    localStorage.setItem("userToken", action.payload.token);
+                if (action.payload.code === 0) {
+                    state.userToken = action.payload.data.token;
+                    state.user = action.payload.data.user;
                 } else {
-                    localStorage.removeItem("userToken");
+                    state.userToken = null;
+                    state.user = null;
                     state.error = action.payload.message || "Failed to login.";
                 }
             })
@@ -67,6 +78,8 @@ const authSlice = createSlice({
     },
 });
 
+const persistedReducer = persistReducer(persistConfig, authSlice.reducer);
+
 export const { logout } = authSlice.actions;
 
-export default authSlice.reducer;
+export default persistedReducer;

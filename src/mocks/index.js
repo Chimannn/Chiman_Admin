@@ -1,6 +1,6 @@
 import { setupWorker } from "msw/browser";
-import { handlers } from "./handlers";
+import userApi from "./handlers/user";
 
-const worker = setupWorker(...handlers);
+const worker = setupWorker(...userApi);
 
 export default worker;

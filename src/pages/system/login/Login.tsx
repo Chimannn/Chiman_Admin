@@ -31,8 +31,10 @@ const Login: React.FC = () => {
             setLoading(true);
             const res = await dispatch(login(values)).unwrap();
             setLoading(false);
-            if (res?.message === "success") {
-                message.success("Success");
+            if (res?.code === 0) {
+                console.log(res);
+
+                message.success("Login Success");
                 navigate("/dashboard");
             } else {
                 message.error(`Failed：${res?.message || "unknown error."}`);
@@ -88,12 +90,7 @@ const Login: React.FC = () => {
                     </Form.Item>
 
                     <Form.Item label={null}>
-                        <Button
-                            type="primary"
-                            htmlType="submit"
-                            block
-                            loading={loading}
-                        >
+                        <Button type="primary" htmlType="submit" block loading={loading}>
                             Submit
                         </Button>
                     </Form.Item>

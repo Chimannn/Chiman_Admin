@@ -1,11 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { HomeOutlined } from "@ant-design/icons";
 import { Breadcrumb } from "antd";
 import { Link, useLocation } from "react-router-dom";
-import { subRoutes as routerMap } from "@/router";
+import { generateRoutes } from "@/router/hooks";
+
 const BreadCrumb = () => {
     const location = useLocation();
-    const breadcrumbs = generateBreadcrumbs(location.pathname);
+    const user = useSelector((state: any) => state.auth.user);
+    const permissions = user?.permissions || [];
+    const breadcrumbs = generateBreadcrumbs(location.pathname, permissions);
     return (
         <Breadcrumb
             items={[
@@ -22,7 +26,8 @@ const BreadCrumb = () => {
     );
 };
 
-const generateBreadcrumbs = (pathname: string) => {
+const generateBreadcrumbs = (pathname: string, permissions: array) => {
+    const routerMap = generateRoutes(permissions);
     const paths = pathname.split("/").filter((path) => path !== "");
     let currentPath = "";
     return paths.map((path) => {
