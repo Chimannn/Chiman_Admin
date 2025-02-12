@@ -33,6 +33,7 @@ axiosInstance.interceptors.response.use(
         return res.data;
     },
     (error: AxiosError<Result>) => {
+        NProgressDone();
         const { response, message } = error || {};
 
         const errMsg = response?.data?.message || message || "Error Message";
