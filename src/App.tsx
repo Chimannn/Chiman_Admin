@@ -3,12 +3,13 @@ import { Provider } from "react-redux";
 import { store, persistor } from "./store";
 import { AppRouter } from "./router";
 import { PersistGate } from "redux-persist/integration/react";
+import { CircleLoading } from "@/components/loading";
 
 function App() {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<CircleLoading />}>
             <Provider store={store}>
-                <PersistGate persistor={persistor} loading={<div>Loading...</div>}>
+                <PersistGate persistor={persistor} loading={<CircleLoading />}>
                     <AppRouter />
                 </PersistGate>
             </Provider>

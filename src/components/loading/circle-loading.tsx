@@ -1,8 +1,9 @@
 import { Spin } from "antd";
+import "./circle-loading.scss";
 
 export function CircleLoading() {
     return (
-        <div className="flex h-full items-center justify-center">
+        <div className="circle-loading">
             <Spin size="large" />
         </div>
     );

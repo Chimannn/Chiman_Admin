@@ -1,13 +1,10 @@
-import axios, {
-    type AxiosRequestConfig,
-    type AxiosError,
-    type AxiosResponse,
-} from "axios";
+import axios, { type AxiosRequestConfig, type AxiosError, type AxiosResponse } from "axios";
 
 import { logout } from "@/store/auth/authSlice";
 
 import { toast } from "sonner";
 import type { Result } from "@/types/api";
+import { NProgressStart, NProgressDone } from "@/components/progress-bar";
 
 // 创建 axios 实例
 const axiosInstance = axios.create({
@@ -19,6 +16,7 @@ const axiosInstance = axios.create({
 // 请求拦截
 axiosInstance.interceptors.request.use(
     (config) => {
+        NProgressStart();
         config.headers.Authorization = "Bearer Token";
         return config;
     },
@@ -30,6 +28,7 @@ axiosInstance.interceptors.request.use(
 // 响应拦截
 axiosInstance.interceptors.response.use(
     (res: AxiosResponse<Result>) => {
+        NProgressDone();
         if (!res.data) throw new Error("Api Request Failed");
         return res.data;
     },
