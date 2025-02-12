@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
 
 import Layout from "@/Layout/dashboard";
-// import Permissions from "./tempPermissionJson";
 import type { AppRouteObject } from "@/types/router";
 import PageError from "@/pages/system/error/PageError";
 import Page404 from "@/pages/system/error/Page404";
 import Login from "@/pages/system/login/Login";
 import ProtectedRoute from "./protectedRoute";
-import { generateRoutes } from "../hooks";
+import { usePermissionRoutes } from "../hooks";
 
 export const AppRouter = () => {
     const user = useSelector((state) => state.auth.user);
+    const dynamicRoutes = usePermissionRoutes(user?.permissions || null);
 
     const PUBLIC_ROUTE: AppRouteObject = {
         path: "/login",
@@ -29,15 +29,6 @@ export const AppRouter = () => {
         element: <Page404 />,
     };
 
-    const [dynamicRoutes, setDynamicRoutes] = useState<AppRouteObject[]>([]);
-
-    useEffect(() => {
-        if (user && user.permissions) {
-            const permissions = user.permissions;
-            setDynamicRoutes(generateRoutes(permissions));
-        }
-    }, [user]);
-
     const PROTECTED_ROUTE: AppRouteObject = {
         path: "/",
         element: (
@@ -51,10 +42,6 @@ export const AppRouter = () => {
         ],
     };
 
-    // const NO_MATCHED_ROUTE: AppRouteObject = {
-    //     path: "*",
-    //     element: <Navigate to={"/"} replace />,
-    // };
     const routes = createBrowserRouter([PUBLIC_ROUTE, PROTECTED_ROUTE, ERROR_PAGE_ROUTE]);
 
     return <RouterProvider router={routes} />;

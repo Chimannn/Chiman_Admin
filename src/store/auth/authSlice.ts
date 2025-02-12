@@ -40,7 +40,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-    userToken: localStorage.getItem("userToken") || null,
+    userToken: null,
     user: null,
     loading: false,
     error: null,
