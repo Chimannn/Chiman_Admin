@@ -9,3 +9,13 @@ export const presetsColors = {
         darker: "#004B50",
     },
 };
+
+export const darkColorTokens = {
+    background: "#161c24",
+    text: "#fff",
+};
+
+export const lightColorTokens = {
+    background: "#fff",
+    text: "#000",
+};
