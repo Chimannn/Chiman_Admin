@@ -1,21 +1,20 @@
 import src from "@/assets/react.svg";
 import "./index.scss";
+import { Typography } from "antd";
 
 const SideLogo = (props) => {
     return (
         <div className="side-logo">
             <img src={src} alt="image" />
             {!props.collapsed && (
-                <span
+                <Typography.Title
                     className="side-title"
                     style={{
-                        animation: !props.collapsed
-                            ? "fadeIn 1.4s ease"
-                            : "none",
+                        animation: !props.collapsed ? "fadeIn 1.4s ease" : "none",
                     }}
                 >
                     Chiman Admin
-                </span>
+                </Typography.Title>
             )}
         </div>
     );

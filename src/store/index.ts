@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import collapseReducer from "./collapsed/collapsedSlice";
 import authReducer from "./auth/authSlice";
+import themeReducer from "./theme/themeSlice";
+
 import { persistStore } from "redux-persist";
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 
@@ -8,6 +10,7 @@ const store = configureStore({
     reducer: {
         collapsed: collapseReducer,
         auth: authReducer,
+        theme: themeReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

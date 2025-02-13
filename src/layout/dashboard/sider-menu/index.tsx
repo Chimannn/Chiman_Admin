@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate, useMatches, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Layout, Menu } from "antd";
 import "./index.scss";
 import SideLogo from "./component/side-logo";
@@ -7,6 +8,7 @@ import SideLogo from "./component/side-logo";
 const { Sider } = Layout;
 const SideMenu: React.FC = ({ menuData, collapsed }) => {
     const [openKeys, setOpenKeys] = useState<string[]>(["dashboard"]);
+    const currentTheme = useSelector((state) => state.theme.current);
 
     const navigate = useNavigate();
     const matches = useMatches();
@@ -17,11 +19,7 @@ const SideMenu: React.FC = ({ menuData, collapsed }) => {
     useEffect(() => {
         if (!collapsed) {
             const keys = matches
-                .filter(
-                    (match) =>
-                        match.pathname !== "/" &&
-                        match.pathname !== location.pathname
-                )
+                .filter((match) => match.pathname !== "/" && match.pathname !== location.pathname)
                 .map((match) => match.pathname);
             setOpenKeys(keys);
         }
@@ -35,10 +33,17 @@ const SideMenu: React.FC = ({ menuData, collapsed }) => {
     };
 
     return (
-        <Sider width={260} trigger={null} collapsible collapsed={collapsed}>
+        <Sider
+            theme={currentTheme}
+            collapsedWidth={80}
+            width={260}
+            trigger={null}
+            collapsible
+            collapsed={collapsed}
+        >
             <SideLogo collapsed={collapsed} />
             <Menu
-                theme="dark"
+                theme={currentTheme}
                 mode="inline"
                 onClick={onClick}
                 items={menuData}

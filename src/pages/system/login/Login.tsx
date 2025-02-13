@@ -32,7 +32,7 @@ const Login: React.FC = () => {
             const res = await dispatch(login(values)).unwrap();
             setLoading(false);
             if (res?.code === 0) {
-                console.log(res);
+                console.log("登录成功：", res);
 
                 message.success("Login Success");
                 navigate("/dashboard");

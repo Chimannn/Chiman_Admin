@@ -6,16 +6,16 @@
     margin: 20px auto;
     height: 45px;
     .side-title {
-        color: aliceblue;
+        color: "rgb(0, 167, 111)";
         font-size: 18px;
         font-weight: 600;
         font-family: fantasy;
+        margin-left: 10px;
     }
     img {
         width: 50px;
         height: 100%;
         animation: rotate 5s linear infinite;
-        margin-right: 10px;
     }
 }
 
