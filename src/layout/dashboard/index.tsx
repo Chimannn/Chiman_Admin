@@ -13,12 +13,14 @@ import ThemeSwitchButton from "../components/theme-switch-button";
 import SideMenu from "./sider-menu";
 import generateMenuItems from "./sider-menu/component/hooks/useRenderMenuData";
 import Permissions from "@/router/tempPermissionJson";
+import { useResponsive } from "@/utils/responsive";
 
 const { Header, Content } = Layout;
 const App: React.FC = () => {
     const collapsed = useSelector((state: object) => state.collapsed.collapsed);
     const dispatch = useDispatch();
     const location = useLocation();
+    const { isDesktop } = useResponsive();
 
     const menuData = generateMenuItems(Permissions, collapsed);
 
@@ -32,31 +34,35 @@ const App: React.FC = () => {
 
     return (
         <Layout style={{ height: "100%" }}>
-            <SideMenu menuData={menuData} collapsed={collapsed} />
+            <SideMenu className="the-Sider" menuData={menuData} collapsed={collapsed} />
             <Layout>
                 <Header className="Header" style={{ background: colorBgLayout }}>
-                    <Breadcrumb />
-                    <Button
-                        className="collapse-btn"
-                        type="text"
-                        icon={
-                            collapsed ? (
-                                <RightSquareTwoTone
-                                    className="collapse-icon"
-                                    twoToneColor="#5ac6f7"
-                                />
-                            ) : (
-                                <LeftSquareTwoTone
-                                    className="collapse-icon"
-                                    twoToneColor="#5ac6f7"
-                                />
-                            )
-                        }
-                        onClick={clickCollapse}
-                    />
+                    {isDesktop && (
+                        <>
+                            <Breadcrumb />
+                            <Button
+                                className="collapse-btn"
+                                type="text"
+                                icon={
+                                    collapsed ? (
+                                        <RightSquareTwoTone
+                                            className="collapse-icon"
+                                            twoToneColor="#5ac6f7"
+                                        />
+                                    ) : (
+                                        <LeftSquareTwoTone
+                                            className="collapse-icon"
+                                            twoToneColor="#5ac6f7"
+                                        />
+                                    )
+                                }
+                                onClick={clickCollapse}
+                            />
+                        </>
+                    )}
                     <div className="Header-right">
-                        <Notice />
                         <ThemeSwitchButton />
+                        <Notice />
                     </div>
                 </Header>
                 <Content

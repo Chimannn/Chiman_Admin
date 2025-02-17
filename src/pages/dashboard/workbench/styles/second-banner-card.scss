@@ -1,0 +1,20 @@
+.base {
+    display: flex;
+    position: relative;
+    align-items: center;
+    border-radius: 16px;
+    padding: 6px;
+    height: 115.5px;
+    .title {
+        display: flex;
+        flex-direction: column;
+        margin-left: 2px;
+        .span1 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .span2 {
+            opacity: 0.5;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+@use "@/styles/mixin/index" as *;
+
+.second-banner-card {
+    @include respond-to(mlg) {
+        padding: 0 !important;
+    }
+}
+
+.space {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}

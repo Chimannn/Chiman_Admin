@@ -40,6 +40,7 @@ const SideMenu: React.FC = ({ menuData, collapsed }) => {
             trigger={null}
             collapsible
             collapsed={collapsed}
+            className="Sider"
         >
             <SideLogo collapsed={collapsed} />
             <Menu

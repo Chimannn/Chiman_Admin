@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import apiClient from "@/api/apiClient";
-import { Typography } from "antd";
-
+import { Row, Col, Space } from "antd";
+import BannerCard from "./components/banner-card";
+import { Conversion, Application } from "./components/second-banner-card";
+import "./index.scss";
 const Analysis = () => {
     useEffect(() => {
         const fetchData = async () => {
@@ -15,6 +17,18 @@ const Analysis = () => {
         fetchData();
     }, []);
 
-    return <Typography.Title>Hi, Welcome back!👋</Typography.Title>;
+    return (
+        <Row gutter={[16, 16]} justify="center">
+            <Col span={24} lg={16}>
+                <BannerCard />
+            </Col>
+            <Col span={24} lg={8} className="second-banner-card">
+                <Space direction="vertical" size="small" className="space">
+                    <Conversion />
+                    <Application />
+                </Space>
+            </Col>
+        </Row>
+    );
 };
 export default Analysis;

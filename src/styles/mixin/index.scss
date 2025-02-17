@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../breakPoints" as *;
+
+@mixin respond-to($media) {
+    @if map.has-key($map: $breakpoints, $key: $media) {
+        @media (max-width: map.get($breakpoints, $media)) {
+            @content;
+        }
+    } @else {
+        @warn "Breakpoint `#{$media}` does not exist in `$breakpoints` map.";
+    }
+}

@@ -1,0 +1,27 @@
+@use "@/styles/mixin/index" as *;
+
+.Row_1 {
+    background-color: #9d93e6;
+    border-radius: 16px;
+    height: 240px;
+    max-height: 400px;
+
+    @include respond-to(mlg) {
+        height: auto !important;
+    }
+
+    .Col_1 {
+        .title {
+            color: #463f8b !important;
+        }
+    }
+    .Col_2 {
+        text-align: center;
+        align-content: center;
+    }
+    .Character_1 {
+        width: 100%;
+        max-width: 240px;
+        height: auto;
+    }
+}
