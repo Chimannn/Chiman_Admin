@@ -1,0 +1,21 @@
+.div1 {
+    flex-grow: 1;
+    h6 {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 500;
+    }
+    .div2 {
+        margin-bottom: 2px;
+        margin-top: 4px;
+        display: flex;
+        flex-direction: row;
+        .div3 {
+            margin-left: 2px;
+        }
+    }
+    h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+}

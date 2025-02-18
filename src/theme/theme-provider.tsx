@@ -1,10 +1,10 @@
 import React from "react";
 import { ConfigProvider } from "antd";
-import { useSelector } from "react-redux";
 import { presetsColors, lightColorTokens, darkColorTokens } from "./tokens/colors";
+import useTheme from "@/theme/use-theme";
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-    const theme = useSelector((state) => state.theme.current);
+    const { theme } = useTheme();
 
     const primaryColorToken = presetsColors.default;
     const colorTokens = theme === "dark" ? darkColorTokens : lightColorTokens;

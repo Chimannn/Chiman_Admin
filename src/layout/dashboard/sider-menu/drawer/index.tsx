@@ -1,11 +1,11 @@
 import { Drawer } from "antd";
 import SideMenu from "../index";
-import { useSelector } from "react-redux";
+import useTheme from "@/theme/use-theme";
 
 export default function DrawerSider({ onClose, openDrawer, menuData, collapsed, isMobileOpen }) {
-    const theme = useSelector((state) => state.theme.current);
+    const { themeStyles } = useTheme();
     const drawerStyles = {
-        body: { padding: "0px", backgroundColor: theme === "dark" ? "#161c24" : "#fff" },
+        body: { padding: "0px", backgroundColor: themeStyles.backgroundColor },
     };
     return (
         <Drawer

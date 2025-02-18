@@ -4,25 +4,25 @@ import { logout } from "@/store/auth/authSlice";
 import { Avatar, Dropdown, Space, Divider } from "antd";
 import type { MenuProps } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
+import useTheme from "@/theme/use-theme";
 
 export default function Account() {
     const dispatch = useDispatch();
-    const theme = useSelector((state: any) => state.theme.current);
+    const { themeStyles } = useTheme();
     const handleLogout = () => {
         dispatch(logout());
     };
 
     const contentStyle: React.CSSProperties = {
-        color: theme === "dark" ? "#fff" : "#000",
-        backgroundColor: theme === "dark" ? "#161c24" : "#fff",
+        color: themeStyles.color,
+        backgroundColor: themeStyles.backgroundColor,
         borderRadius: "16px",
-        boxShadow: `0 12px 24px 0 ${theme === "dark" ? "rgb(40 40 41)" : "#919EAB"}`,
+        boxShadow: themeStyles.account.boxShadow,
     };
 
     const menuStyle: React.CSSProperties = {
         boxShadow: "none",
-        backgroundColor: theme === "dark" ? "#161c24" : "#fff",
+        backgroundColor: themeStyles.backgroundColor,
     };
 
     const dropdownRender: DropdownProps["dropdownRender"] = (menu) => (

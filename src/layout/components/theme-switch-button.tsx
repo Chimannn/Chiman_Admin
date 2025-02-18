@@ -3,15 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "@/store/theme/themeSlice";
 import { Switch } from "antd";
 import "../styles/switch.scss";
+import useTheme from "@/theme/use-theme";
 
 const ThemeSwitchButton = () => {
     const dispatch = useDispatch();
     const theme = useSelector((state) => state.theme.current);
+    const { themeStyles } = useTheme();
     const handleToggleTheme = () => {
         dispatch(toggleTheme());
     };
     const style = {
-        backgroundColor: theme === "dark" ? "#6d5ee1" : "#9d93e6",
+        backgroundColor: themeStyles.switch.color,
     };
 
     return (

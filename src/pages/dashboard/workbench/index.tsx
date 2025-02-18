@@ -3,7 +3,9 @@ import apiClient from "@/api/apiClient";
 import { Row, Col, Space } from "antd";
 import BannerCard from "./components/banner-card";
 import { Conversion, Application } from "./components/second-banner-card";
+import TotalCard from "./components/total-card";
 import "./index.scss";
+
 const Analysis = () => {
     useEffect(() => {
         const fetchData = async () => {
@@ -18,17 +20,50 @@ const Analysis = () => {
     }, []);
 
     return (
-        <Row gutter={[16, 16]} justify="center">
-            <Col span={24} lg={16}>
-                <BannerCard />
-            </Col>
-            <Col span={24} lg={8} className="second-banner-card">
-                <Space direction="vertical" size="small" className="space">
-                    <Conversion />
-                    <Application />
-                </Space>
-            </Col>
-        </Row>
+        <>
+            <Row gutter={[16, 16]} justify="center">
+                <Col span={24} lg={16} className="banner-card">
+                    <BannerCard />
+                </Col>
+                <Col span={24} lg={8} className="second-banner-card">
+                    <Space direction="vertical" size="small" className="space">
+                        <Conversion />
+                        <Application />
+                    </Space>
+                </Col>
+            </Row>
+            <Row gutter={[16, 16]} className="Row2" justify="center">
+                <Col span={24} md={8}>
+                    <TotalCard
+                        title="Total Active Users"
+                        increase
+                        count="18,765"
+                        percent="2.6%"
+                        chartData={[22, 8, 35, 50, 82, 84, 77, 12, 87, 43]}
+                    />
+                </Col>
+
+                <Col span={24} md={8}>
+                    <TotalCard
+                        title="Total Installed"
+                        increase
+                        count="4,876"
+                        percent="0.2%"
+                        chartData={[45, 52, 38, 24, 33, 26, 21, 20, 6]}
+                    />
+                </Col>
+
+                <Col span={24} md={8}>
+                    <TotalCard
+                        title="Total Downloads"
+                        increase={false}
+                        count="678"
+                        percent="0.1%"
+                        chartData={[35, 41, 62, 42, 13, 18, 29, 37, 36]}
+                    />
+                </Col>
+            </Row>
+        </>
     );
 };
 export default Analysis;

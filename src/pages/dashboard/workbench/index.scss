@@ -1,5 +1,6 @@
 @use "@/styles/mixin/index" as *;
 
+.banner-card,
 .second-banner-card {
     @include respond-to(mlg) {
         padding: 0 !important;
@@ -10,4 +11,8 @@
     width: 100%;
     height: 100%;
     justify-content: center;
+}
+
+.Row2 {
+    margin-top: 20px;
 }
