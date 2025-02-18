@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { RightSquareTwoTone, LeftSquareTwoTone } from "@ant-design/icons";
+import { RightSquareTwoTone, LeftSquareTwoTone, AlignLeftOutlined } from "@ant-design/icons";
 import { Button, Layout, theme } from "antd";
 import { ErrorBoundary } from "react-error-boundary";
 import "./index.scss";
@@ -14,10 +14,12 @@ import SideMenu from "./sider-menu";
 import generateMenuItems from "./sider-menu/component/hooks/useRenderMenuData";
 import Permissions from "@/router/tempPermissionJson";
 import { useResponsive } from "@/utils/responsive";
+import DrawerSider from "./sider-menu/drawer";
 
 const { Header, Content } = Layout;
 const App: React.FC = () => {
     const collapsed = useSelector((state: object) => state.collapsed.collapsed);
+    const [openDrawer, setpenDrawer] = useState(false);
     const dispatch = useDispatch();
     const location = useLocation();
     const { isDesktop } = useResponsive();
@@ -32,12 +34,32 @@ const App: React.FC = () => {
         dispatch(toggleCollapsed());
     };
 
+    const onClickSimpleMenu = () => {
+        setpenDrawer(true);
+    };
+
+    const onClose = () => {
+        setpenDrawer(false);
+    };
+
     return (
         <Layout style={{ height: "100%" }}>
-            <SideMenu className="the-Sider" menuData={menuData} collapsed={collapsed} />
+            <SideMenu
+                className="the-Sider"
+                menuData={menuData}
+                collapsed={collapsed}
+                isMobileOpen={false}
+            />
+            <DrawerSider
+                onClose={onClose}
+                openDrawer={openDrawer}
+                menuData={menuData}
+                collapsed={false}
+                isMobileOpen={true}
+            />
             <Layout>
                 <Header className="Header" style={{ background: colorBgLayout }}>
-                    {isDesktop && (
+                    {isDesktop ? (
                         <>
                             <Breadcrumb />
                             <Button
@@ -59,7 +81,10 @@ const App: React.FC = () => {
                                 onClick={clickCollapse}
                             />
                         </>
+                    ) : (
+                        <AlignLeftOutlined className="simple-menu" onClick={onClickSimpleMenu} />
                     )}
+
                     <div className="Header-right">
                         <ThemeSwitchButton />
                         <Account />

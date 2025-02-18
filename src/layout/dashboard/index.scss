@@ -1,9 +1,14 @@
+@use "@/styles/mixin/index" as *;
+
 .Header {
     position: relative;
     padding: 20px;
     padding-left: 40px;
     display: flex;
     justify-content: space-between;
+    @include respond-to(md) {
+        padding-left: 20px;
+    }
     .collapse-btn {
         color: aquamarine;
         position: absolute;
@@ -19,5 +24,8 @@
     .Header-right {
         display: flex;
         align-items: center;
+    }
+    .simple-menu {
+        font-size: 20px;
     }
 }

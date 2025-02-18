@@ -6,7 +6,7 @@ import "./index.scss";
 import SideLogo from "./component/side-logo";
 
 const { Sider } = Layout;
-const SideMenu: React.FC = ({ menuData, collapsed }) => {
+const SideMenu: React.FC = ({ menuData, collapsed, isMobileOpen }) => {
     const [openKeys, setOpenKeys] = useState<string[]>(["dashboard"]);
     const currentTheme = useSelector((state) => state.theme.current);
 
@@ -40,7 +40,7 @@ const SideMenu: React.FC = ({ menuData, collapsed }) => {
             trigger={null}
             collapsible
             collapsed={collapsed}
-            className="Sider"
+            className={`Sider ${isMobileOpen && "Sider1"}`}
         >
             <SideLogo collapsed={collapsed} />
             <Menu
