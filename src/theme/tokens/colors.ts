@@ -2,11 +2,11 @@
 
 export const presetsColors = {
     default: {
-        lighter: "#C8FAD6",
-        light: "#5BE49B",
-        default: "#00A76F",
-        dark: "#007867",
-        darker: "#004B50",
+        lighter: "rgb(196 190 241)",
+        light: "#9d93e6",
+        default: "#6555df",
+        dark: "#4d39e5",
+        darker: "#201198",
     },
 };
 

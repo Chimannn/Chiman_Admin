@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "@/store/theme/themeSlice";
-import { Button } from "antd";
+import { Switch } from "antd";
+import "../styles/switch.scss";
 
 const ThemeSwitchButton = () => {
     const dispatch = useDispatch();
@@ -9,11 +10,15 @@ const ThemeSwitchButton = () => {
     const handleToggleTheme = () => {
         dispatch(toggleTheme());
     };
+    const style = {
+        backgroundColor: theme === "dark" ? "#6d5ee1" : "#9d93e6",
+    };
 
     return (
-        <Button type="primary" onClick={handleToggleTheme}>
-            {theme === "light" ? "🌙 黑夜模式" : "🌞 白天模式"}
-        </Button>
+        <>
+            <span className={`icon ${theme}`}>{theme === "light" ? "🌙" : "🌞"}</span>
+            <Switch onChange={handleToggleTheme} style={style} />
+        </>
     );
 };
 

@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleCollapsed } from "@/store/collapsed/collapsedSlice";
 
 import Breadcrumb from "../components/bread-crumb";
-import Notice from "../components/notice";
+import Account from "../components/account";
 import ThemeSwitchButton from "../components/theme-switch-button";
 import SideMenu from "./sider-menu";
 import generateMenuItems from "./sider-menu/component/hooks/useRenderMenuData";
@@ -47,12 +47,12 @@ const App: React.FC = () => {
                                     collapsed ? (
                                         <RightSquareTwoTone
                                             className="collapse-icon"
-                                            twoToneColor="#5ac6f7"
+                                            twoToneColor="#9d93e6"
                                         />
                                     ) : (
                                         <LeftSquareTwoTone
                                             className="collapse-icon"
-                                            twoToneColor="#5ac6f7"
+                                            twoToneColor="#9d93e6"
                                         />
                                     )
                                 }
@@ -62,7 +62,7 @@ const App: React.FC = () => {
                     )}
                     <div className="Header-right">
                         <ThemeSwitchButton />
-                        <Notice />
+                        <Account />
                     </div>
                 </Header>
                 <Content
