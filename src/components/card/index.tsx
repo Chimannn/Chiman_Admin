@@ -17,7 +17,7 @@ const Card = ({ children, style, className }: Props) => {
                 padding: themeStyles.baseTheme.spacing[6],
                 overflow: "hidden",
                 position: "relative",
-                // display: "flex",
+                display: "flex",
                 alignItems: "center",
                 ...style,
             }}

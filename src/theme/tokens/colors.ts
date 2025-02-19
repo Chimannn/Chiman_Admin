@@ -53,6 +53,7 @@ export const lightTheme = {
     baseTheme,
     backgroundColor: "#ffffff",
     color: "#000000",
+    foreColor: "#000000",
     account: {
         boxShadow: "0 12px 24px 0  #919EAB",
     },
@@ -69,6 +70,7 @@ export const darkTheme = {
     baseTheme,
     backgroundColor: "#161c24",
     color: "#ffffff",
+    foreColor: "#fff",
     account: {
         boxShadow: "0 12px 24px 0 rgb(40 40 41)",
     },
