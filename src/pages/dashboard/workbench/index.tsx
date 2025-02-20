@@ -5,6 +5,7 @@ import BannerCard from "./components/banner-card";
 import { Conversion, Application } from "./components/second-banner-card";
 import TotalCard from "./components/total-card";
 import CurrentDownload from "./components/current-download";
+import AreaDownload from "./components/area-download";
 import "./index.scss";
 
 const Analysis = () => {
@@ -67,7 +68,7 @@ const Analysis = () => {
                     <CurrentDownload />
                 </Col>
                 <Col span={24} md={12} lg={16}>
-                    <CurrentDownload />
+                    <AreaDownload />
                 </Col>
             </Row>
         </>

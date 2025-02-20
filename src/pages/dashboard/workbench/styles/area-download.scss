@@ -1,0 +1,20 @@
+.area-download {
+    flex-direction: column;
+    margin-top: 16px;
+    header {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-self: start;
+    }
+    main {
+        width: 100%;
+    }
+}
+
+.apexcharts-xaxistooltip.apexcharts-theme-light {
+    background: #fff;
+}
+.apexcharts-xaxistooltip.apexcharts-active {
+    border-radius: 10px;
+}

@@ -16,6 +16,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
                     colorPrimary: primaryColorToken.default,
                     colorBgLayout: colorTokens.background,
                     colorTextBase: colorTokens.text,
+                    colorBgBase: colorTokens.background,
                 },
                 components: {
                     Layout: {
