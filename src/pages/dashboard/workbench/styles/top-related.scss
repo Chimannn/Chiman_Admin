@@ -1,0 +1,57 @@
+.top-related {
+    max-height: 474px;
+    flex-direction: column;
+    header {
+        align-self: start;
+    }
+    main {
+        width: 100%;
+        .div1 {
+            margin-bottom: 16px;
+            display: flex;
+            height: 68px;
+            .logo {
+                margin-right: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: "12px";
+                width: "48px";
+                height: "48px";
+            }
+            .div2 {
+                display: flex;
+                flex-direction: column;
+                .title {
+                    font-weight: 500;
+                }
+                .div3 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: gray;
+                    .platform {
+                        margin-left: 6px;
+                        margin-right: 6px;
+                        font-size: 12px;
+                        line-height: 16px;
+                        font-weight: 300;
+                    }
+                }
+            }
+            .div4 {
+                margin-left: auto;
+                display: flex;
+                flex-direction: column;
+                align-self: center;
+                text-align: end;
+                .reviews {
+                    margin-top: 10px;
+                    text-align: right;
+                    font-size: 12px;
+                    color: #c6cfd7;
+                }
+            }
+        }
+    }
+}

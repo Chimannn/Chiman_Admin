@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import apiClient from "@/api/apiClient";
 import { Row, Col, Space } from "antd";
+
 import BannerCard from "./components/banner-card";
 import { Conversion, Application } from "./components/second-banner-card";
 import TotalCard from "./components/total-card";
 import CurrentDownload from "./components/current-download";
 import AreaDownload from "./components/area-download";
+import NewInvoice from "./components/new-invoice";
+import TopRelated from "./components/top-related";
 import "./index.scss";
 
 const Analysis = () => {
@@ -69,6 +72,14 @@ const Analysis = () => {
                 </Col>
                 <Col span={24} md={12} lg={16}>
                     <AreaDownload />
+                </Col>
+            </Row>
+            <Row gutter={[16, 16]} className="Row4" justify="center">
+                <Col span={24} md={12} lg={16}>
+                    <NewInvoice />
+                </Col>
+                <Col span={24} md={12} lg={8}>
+                    <TopRelated />
                 </Col>
             </Row>
         </>

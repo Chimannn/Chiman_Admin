@@ -43,7 +43,7 @@ const App: React.FC = () => {
     };
 
     return (
-        <Layout style={{ height: "100%" }}>
+        <Layout style={{ height: "100%", overflow: "auto" }}>
             <SideMenu
                 className="the-Sider"
                 menuData={menuData}
@@ -96,6 +96,7 @@ const App: React.FC = () => {
                         minHeight: 280,
                         background: colorBgLayout,
                         borderRadius: borderRadiusLG,
+                        overflow: "auto",
                     }}
                 >
                     <ErrorBoundary fallback={<div>404 Not Found !!!</div>} resetKeys={[location]}>

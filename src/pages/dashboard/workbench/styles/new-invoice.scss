@@ -1,0 +1,16 @@
+.new-invoice {
+    max-height: 494px;
+    flex-direction: column;
+    header {
+        align-self: start;
+    }
+    main {
+        width: 100%;
+    }
+}
+
+.ant-table-body {
+    scrollbar-width: thin;
+    scrollbar-color: #eaeaea transparent;
+    scrollbar-gutter: stable;
+}
