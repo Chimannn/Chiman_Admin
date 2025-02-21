@@ -54,6 +54,7 @@ export const lightTheme = {
     backgroundColor: "#ffffff",
     color: "#000000",
     foreColor: "#000000",
+    borderColor: "#d9d9d9",
     account: {
         boxShadow: "0 12px 24px 0  #919EAB",
     },
@@ -64,6 +65,24 @@ export const lightTheme = {
         boxShadow: "0px 2px 5px #ADADAD",
         backgroundColor: "#ffffff",
     },
+    analysisCard: {
+        success: {
+            color: "#1b806a",
+            backgroundColor: "#d7f0e5",
+        },
+        info: {
+            color: "#006c9c",
+            backgroundColor: "#ccf1f7",
+        },
+        warning: {
+            color: "#b76e00",
+            backgroundColor: "#ffeecc",
+        },
+        error: {
+            color: "#b71d18",
+            backgroundColor: "#ffddd6",
+        },
+    },
 };
 
 export const darkTheme = {
@@ -71,6 +90,7 @@ export const darkTheme = {
     backgroundColor: "#161c24",
     color: "#ffffff",
     foreColor: "#fff",
+    borderColor: "#d9d9d9",
     account: {
         boxShadow: "0 12px 24px 0 rgb(40 40 41)",
     },
@@ -80,5 +100,23 @@ export const darkTheme = {
     card: {
         boxShadow: "0 2px 7px 0 #000",
         backgroundColor: "#212b36",
+    },
+    analysisCard: {
+        success: {
+            color: "#1b806a",
+            backgroundColor: "#1d3a36",
+        },
+        info: {
+            color: "#006c9c",
+            backgroundColor: "#123b48",
+        },
+        warning: {
+            color: "#b76e00",
+            backgroundColor: "#45381d",
+        },
+        error: {
+            color: "#b71d18",
+            backgroundColor: "#452727",
+        },
     },
 };

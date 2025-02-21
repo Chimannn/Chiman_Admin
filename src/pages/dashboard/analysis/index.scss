@@ -1,0 +1,18 @@
+.Row2,
+.Row3,
+.Row4 {
+    margin-top: 32px;
+}
+
+.Row4 {
+    .Row4-1 {
+        justify-content: space-around;
+    }
+    .TrafficCardItem {
+        .ant-card-body {
+            justify-items: center;
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+    }
+}

@@ -17,6 +17,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
                     colorBgLayout: colorTokens.background,
                     colorTextBase: colorTokens.text,
                     colorBgBase: colorTokens.background,
+                    colorBorder: "#c1c1c1",
                 },
                 components: {
                     Layout: {
