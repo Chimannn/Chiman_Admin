@@ -11,7 +11,7 @@ interface Props {
 
 const AnalysisCard = ({ style, cover, title, subtitle }: Props) => {
     return (
-        <Card style={{ display: "block", borderRadius: "16px", padding: "0" }}>
+        <Card style={{ display: "block", borderRadius: "20px", padding: "0" }}>
             <div
                 className="div1"
                 style={{
