@@ -472,6 +472,17 @@ const ADMIN_ROLE = {
     permission: PERMISSION_LIST,
 };
 
+const TEST_ROLE = {
+    id: "9931665660771476",
+    name: "Test",
+    label: "test",
+    status: BasicStatus.ENABLE,
+    order: 2,
+    desc: "test",
+    permission: [DASHBOARD_PERMISSION, COMPONENTS_PERMISSION, FUNCTIONS_PERMISSION],
+};
+export const ROLE_LIST = [ADMIN_ROLE, TEST_ROLE];
+
 /**
  * User data mock
  */
