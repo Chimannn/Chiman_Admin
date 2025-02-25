@@ -76,15 +76,6 @@ const Permissions = [
                 route: "/management/system",
                 children: [
                     {
-                        id: "1985890042972842",
-                        parentId: "0249937641030250",
-                        label: "sys.menu.system.organization",
-                        name: "Organization",
-                        type: 1,
-                        route: "/management/system/organization",
-                        component: "/management/system/organization/index.tsx",
-                    },
-                    {
                         id: "4359580910369984",
                         parentId: "0249937641030250",
                         label: "sys.menu.system.permission",
@@ -282,8 +273,7 @@ const Permissions = [
                         name: "Menu Level 2a",
                         type: 1,
                         route: "/menu-level/menu-level-1b/menu-level-2a",
-                        component:
-                            "/menu-level/menu-level-1b/menu-level-2a/index.tsx",
+                        component: "/menu-level/menu-level-1b/menu-level-2a/index.tsx",
                     },
                     {
                         id: "4873136353891364",
