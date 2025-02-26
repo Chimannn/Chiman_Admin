@@ -48,15 +48,6 @@ const Permissions = [
                 route: "/management/user",
                 children: [
                     {
-                        id: "4754063958766648",
-                        parentId: "2781684678535711",
-                        label: "sys.menu.user.profile",
-                        name: "Profile",
-                        type: 1,
-                        route: "/management/user/profile",
-                        component: "/management/user/profile/index.tsx",
-                    },
-                    {
                         id: "2516598794787938",
                         parentId: "2781684678535711",
                         label: "sys.menu.user.account",

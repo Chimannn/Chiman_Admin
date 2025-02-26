@@ -37,9 +37,7 @@ axiosInstance.interceptors.response.use(
         const { response, message } = error || {};
 
         const errMsg = response?.data?.message || message || "Error Message";
-        toast.error(errMsg, {
-            position: "top-center",
-        });
+        toast.error(errMsg);
 
         const status = response?.status;
         if (status === 401) {

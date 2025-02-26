@@ -1,0 +1,13 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    height: auto !important;
+    .form {
+        width: 100%;
+    }
+    .btn {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

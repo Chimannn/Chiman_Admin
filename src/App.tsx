@@ -6,6 +6,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { CircleLoading } from "@/components/loading";
 import ThemeSync from "@/components/themesync";
 import { ThemeProvider } from "./theme/theme-provider";
+import { Toaster } from "sonner";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <ThemeSync />
                     <ThemeProvider>
                         <AppRouter />
+                        <Toaster />
                     </ThemeProvider>
                 </PersistGate>
             </Provider>
