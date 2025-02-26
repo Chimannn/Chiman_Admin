@@ -16,7 +16,7 @@ function App() {
                     <ThemeSync />
                     <ThemeProvider>
                         <AppRouter />
-                        <Toaster />
+                        <Toaster richColors />
                     </ThemeProvider>
                 </PersistGate>
             </Provider>

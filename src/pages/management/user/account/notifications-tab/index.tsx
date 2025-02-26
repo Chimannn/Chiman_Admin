@@ -5,7 +5,7 @@ import { toast } from "sonner";
 
 export default function NotificationsTab() {
     const handleClick = () => {
-        toast.error("Update success!");
+        toast.success("Update success!");
     };
     return (
         <Card className="notifications">
