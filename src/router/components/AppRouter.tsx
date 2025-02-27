@@ -5,9 +5,9 @@ import { ErrorBoundary } from "react-error-boundary";
 
 import Layout from "@/Layout/dashboard";
 import type { AppRouteObject } from "@/types/router";
-import PageError from "@/pages/system/error/PageError";
-import Page404 from "@/pages/system/error/Page404";
-import Login from "@/pages/system/login/Login";
+import PageError from "@/pages/sys/error/PageError";
+import Page404 from "@/pages/sys/error/Page404";
+import Login from "@/pages/sys/login/Login";
 import ProtectedRoute from "./protectedRoute";
 import { usePermissionRoutes, useNProgressOnRouteChange } from "../hooks";
 

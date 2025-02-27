@@ -55,6 +55,7 @@ export const lightTheme = {
     color: "#000000",
     foreColor: "#000000",
     borderColor: "#d9d9d9",
+    btnBgColor: "#6472e9",
     account: {
         boxShadow: "0 12px 24px 0  #919EAB",
     },
@@ -91,6 +92,7 @@ export const darkTheme = {
     color: "#ffffff",
     foreColor: "#fff",
     borderColor: "#d9d9d9",
+    btnBgColor: "rgb(84 65 223)",
     account: {
         boxShadow: "0 12px 24px 0 rgb(40 40 41)",
     },

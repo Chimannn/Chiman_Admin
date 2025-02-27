@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { ErrorBoundary } from "react-error-boundary";
 import { useNavigate } from "react-router-dom";
 
-import PageError from "@/pages/system/error/PageError";
+import PageError from "@/pages/sys/error/PageError";
 
 type Props = {
     children: React.ReactNode;

@@ -1,0 +1,21 @@
+.div1 {
+    margin: auto;
+    max-width: 400px;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 8px;
+        padding-right: 8px;
+        .titlem,
+        .paragraph {
+            text-align: center;
+        }
+        .go-btn {
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 35px;
+        }
+    }
+}
