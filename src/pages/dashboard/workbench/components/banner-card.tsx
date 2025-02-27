@@ -8,7 +8,7 @@ function BannerCard() {
     return (
         <>
             <Card style={{ padding: 0, borderRadius: themeStyles.baseTheme.borderRadius.xl }}>
-                <Row gutter={[16, 16]} justify="space-between" className="Row_1">
+                <Row gutter={[16, 16]} justify="space-between" className="BannerCard-Row_1">
                     <Col span={24} md={12} xl={16} className="Col_1">
                         <Typography.Title className="title">Hi, Welcome back!👋</Typography.Title>
                     </Col>

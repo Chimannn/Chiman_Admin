@@ -21,7 +21,7 @@ type chartProps = {
 export default function TotalCard({ title, increase, count, percent, chartData }: Props) {
     return (
         <Card>
-            <div className="div1">
+            <div className="top-card-div1">
                 <h6>{title}</h6>
                 <div className="div2">
                     {increase ? <UpSvgIcon /> : <DownSvgIcon />}
@@ -32,7 +32,7 @@ export default function TotalCard({ title, increase, count, percent, chartData }
                 </div>
                 <h3>{count}</h3>
             </div>
-            <div className="div4">
+            <div className="top-card-div4">
                 <ChartLine chartData={chartData} type="line" width={150} />
             </div>
         </Card>

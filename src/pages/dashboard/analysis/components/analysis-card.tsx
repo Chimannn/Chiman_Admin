@@ -13,7 +13,7 @@ const AnalysisCard = ({ style, cover, title, subtitle }: Props) => {
     return (
         <Card style={{ display: "block", borderRadius: "20px", padding: "0" }}>
             <div
-                className="div1"
+                className="analysis-card-div1"
                 style={{
                     ...style,
                 }}

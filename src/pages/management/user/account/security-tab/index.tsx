@@ -19,7 +19,7 @@ export default function SecurityTab() {
     };
 
     return (
-        <Card className="card">
+        <Card className="security-card">
             <Form
                 layout="vertical"
                 initialValues={initFormValues}

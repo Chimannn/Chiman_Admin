@@ -12,7 +12,7 @@ function UserAccount() {
         {
             key: "1",
             label: (
-                <div className="div1">
+                <div className="account-div1">
                     <Iconify icon="solar:user-id-bold" size={24} className="icon" />
                     <span>General</span>
                 </div>
@@ -22,7 +22,7 @@ function UserAccount() {
         {
             key: "2",
             label: (
-                <div className="div1">
+                <div className="account-div1">
                     <Iconify icon="solar:bell-bing-bold-duotone" size={24} className="icon" />
                     <span>Notifications</span>
                 </div>
@@ -32,7 +32,7 @@ function UserAccount() {
         {
             key: "3",
             label: (
-                <div className="div1">
+                <div className="account-div1">
                     <Iconify
                         icon="solar:key-minimalistic-square-3-bold-duotone"
                         size={24}

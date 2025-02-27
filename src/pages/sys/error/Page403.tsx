@@ -24,7 +24,7 @@ function Page403() {
                 <title>403 No Permission!</title>
             </Helmet>
 
-            <div className="div1">
+            <div className="error-div1">
                 <MotionContainer className="container">
                     <motion.div variants={varBounce().in}>
                         <Typography.Title level={3} className="title">

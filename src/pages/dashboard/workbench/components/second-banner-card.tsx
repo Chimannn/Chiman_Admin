@@ -42,7 +42,7 @@ function Base_Card({ percent, title, subtitle, bg, strokeColor }: Props) {
     const format = (val?: number) => <span style={{ color: color }}>{val}%</span>;
     return (
         <Card style={{ padding: 0, borderRadius: themeStyles.baseTheme.borderRadius.xl }}>
-            <div className="base" style={{ background: bg, color: color }}>
+            <div className="second-banner-card-base" style={{ background: bg, color: color }}>
                 <Progress
                     type="circle"
                     size={70}

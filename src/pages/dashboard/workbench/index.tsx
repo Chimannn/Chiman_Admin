@@ -37,7 +37,7 @@ const Analysis = () => {
                     </Space>
                 </Col>
             </Row>
-            <Row gutter={[16, 16]} className="Row2" justify="center">
+            <Row gutter={[16, 16]} className="banner-card-Row2" justify="center">
                 <Col span={24} md={8}>
                     <TotalCard
                         title="Total Active Users"
@@ -66,7 +66,7 @@ const Analysis = () => {
                     />
                 </Col>
             </Row>
-            <Row gutter={[16, 16]} className="Row3" justify="center">
+            <Row gutter={[16, 16]} className="banner-card-Row3" justify="center">
                 <Col span={24} md={12} lg={8}>
                     <CurrentDownload />
                 </Col>
@@ -74,7 +74,7 @@ const Analysis = () => {
                     <AreaDownload />
                 </Col>
             </Row>
-            <Row gutter={[16, 16]} className="Row4" justify="center">
+            <Row gutter={[16, 16]} className="banner-card-Row4" justify="center">
                 <Col span={24} md={12} lg={16}>
                     <NewInvoice />
                 </Col>

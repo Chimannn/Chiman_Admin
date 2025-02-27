@@ -68,7 +68,7 @@ const Analysis = () => {
                     />
                 </Col>
             </Row>
-            <Row gutter={[16, 16]} className="Row2" justify="center">
+            <Row gutter={[16, 16]} className="Analysis-Row2" justify="center">
                 <Col span={24} lg={12} xl={16}>
                     <BaseCard title="Website Visits">
                         <ChartMixed />
@@ -80,7 +80,7 @@ const Analysis = () => {
                     </BaseCard>
                 </Col>
             </Row>
-            <Row gutter={[16, 16]} className="Row3" justify="center">
+            <Row gutter={[16, 16]} className="Analysis-Row3" justify="center">
                 <Col span={24} lg={12} xl={16}>
                     <BaseCard title="Conversion Rates">
                         <ChartBar />
@@ -92,7 +92,7 @@ const Analysis = () => {
                     </BaseCard>
                 </Col>
             </Row>
-            <Row gutter={[16, 16]} className="Row4">
+            <Row gutter={[16, 16]} className="Analysis-Row4">
                 <Col span={24} lg={12} xl={8}>
                     <BaseCard title="Traffic by Site" style={{ height: "100%" }}>
                         <Row gutter={[16, 16]} className="Row4-1">

@@ -24,7 +24,7 @@ function Page500() {
                 <title>500 Internal Server Error</title>
             </Helmet>
 
-            <div className="div1">
+            <div className="error-div1">
                 <MotionContainer className="container">
                     <motion.div variants={varBounce().in}>
                         <Typography.Title level={3} className="title">

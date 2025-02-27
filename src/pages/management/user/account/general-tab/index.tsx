@@ -161,7 +161,7 @@ const GeneralTab = () => {
                             <Input.TextArea />
                         </Form.Item>
 
-                        <div className="form-btn">
+                        <div className="upload-form-btn">
                             <Button type="primary" onClick={handleClick}>
                                 Save Changes
                             </Button>
