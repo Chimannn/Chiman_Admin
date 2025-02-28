@@ -405,7 +405,6 @@ const OTHERS_PERMISSION = [
                 route: "/frame/external_link",
                 hideTab: true,
                 component: "/sys/others/iframe/external-link.tsx",
-                frameSrc: "https://ant.design/",
             },
             {
                 id: "9299640886731819",
@@ -415,7 +414,6 @@ const OTHERS_PERMISSION = [
                 type: PermissionType.MENU,
                 route: "/frame/frame",
                 component: "/sys/others/iframe/index.tsx",
-                frameSrc: "https://ant.design/",
             },
         ],
     },
