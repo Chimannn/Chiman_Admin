@@ -1,11 +1,11 @@
 import axios, { type AxiosRequestConfig, type AxiosError, type AxiosResponse } from "axios";
 
 import { logout } from "@/store/auth/authSlice";
+import { store } from "@/store";
 
 import { toast } from "sonner";
 import type { Result } from "@/types/api";
 import { NProgressStart, NProgressDone } from "@/components/progress-bar";
-
 // 创建 axios 实例
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_APP_BASE_API,
@@ -41,7 +41,7 @@ axiosInstance.interceptors.response.use(
 
         const status = response?.status;
         if (status === 401) {
-            logout();
+            store.dispatch(logout());
         }
         return Promise.reject(error);
     }

@@ -1,0 +1,15 @@
+.clipboard-page {
+    .clipboard-btn {
+        width: 36px;
+        height: 36px;
+        color: gray;
+        padding: 8px;
+        border: none;
+        border-radius: 9999px;
+        background-color: transparent;
+        cursor: pointer;
+        &:hover {
+            background-color: #f0f1f2;
+        }
+    }
+}
