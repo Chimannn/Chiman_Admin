@@ -1,0 +1,39 @@
+.upload-container {
+    padding: 2rem;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 400px;
+    max-width: 800px;
+    justify-content: center;
+}
+
+.progress-container {
+    margin-top: 2rem;
+
+    .chunk-progress {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1rem;
+
+        .chunk {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            .bar {
+                flex: 1;
+                height: 8px;
+                background: #eee;
+                border-radius: 4px;
+                overflow: hidden;
+
+                .fill {
+                    height: 100%;
+                    background: #4caf50;
+                    transition: width 0.3s ease;
+                }
+            }
+        }
+    }
+}
