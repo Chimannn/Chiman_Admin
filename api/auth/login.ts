@@ -1,6 +1,6 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { faker } from "@faker-js/faker";
-import { USER_LIST } from "../assets";
+import { USER_LIST } from "../mock";
 
 module.exports = (req: VercelRequest, res: VercelResponse) => {
     const { username, password } = req.body;
