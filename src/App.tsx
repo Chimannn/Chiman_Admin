@@ -9,7 +9,7 @@ import { ThemeProvider } from "./theme/theme-provider";
 import { Toaster } from "sonner";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Logo } from "@/assets/react.svg";
+import Logo from "@/assets/react.svg";
 function App() {
     return (
         <HelmetProvider>
