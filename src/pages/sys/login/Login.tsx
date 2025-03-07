@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { login } from "@/store/auth/authSlice";
-import "./login.scss";
+import "./Login.scss";
 import type { FormProps } from "antd";
 import { Button, Checkbox, Form, Input, message } from "antd";
 
