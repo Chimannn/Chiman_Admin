@@ -6,7 +6,7 @@ import {
     completeUpload,
 } from "./utils";
 
-interface UploadState {
+export interface UploadState {
     fileHash: string | null;
     chunks: Array<{ index: number; hash: string }>;
     progress: Record<number, number>;

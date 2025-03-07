@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { CircleLoading } from "@/components/loading";
 

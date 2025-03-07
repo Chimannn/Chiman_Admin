@@ -1,11 +1,11 @@
 import useTheme from "@/theme/use-theme";
 
-type Props = {
+export type CardProps = {
     children?: ReactNode;
     className?: string;
     style?: CSSProperties;
 };
-const Card = ({ children, style, className }: Props) => {
+const Card = ({ children, style, className }: CardProps) => {
     const { themeStyles } = useTheme();
     return (
         <div

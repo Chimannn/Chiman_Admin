@@ -21,7 +21,6 @@ export default function ChartPie() {
             },
         },
         tooltip: {
-            fillSeriesColor: false,
             theme: theme,
             fillSeriesColor: false,
             marker: { show: true },

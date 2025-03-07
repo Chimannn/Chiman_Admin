@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface CollapsedState {
+export interface CollapsedState {
     collapsed: boolean;
 }
 

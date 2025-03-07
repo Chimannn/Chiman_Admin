@@ -1,4 +1,4 @@
-import ProtectedRoute from "@/router/components/protectedRoute";
+import ProtectedRoute from "@/router/components/ProtectedRoute";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { varBounce } from "@/components/animate/variants/bounce";

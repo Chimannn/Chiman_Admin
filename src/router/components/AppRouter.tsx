@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { createBrowserRouter, Navigate, RouterProvider, Outlet } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
@@ -8,7 +7,7 @@ import type { AppRouteObject } from "@/types/router";
 import PageError from "@/pages/sys/error/PageError";
 import Page404 from "@/pages/sys/error/Page404";
 import Login from "@/pages/sys/login/Login";
-import ProtectedRoute from "./protectedRoute";
+import ProtectedRoute from "./ProtectedRoute";
 import { usePermissionRoutes, useNProgressOnRouteChange } from "../hooks";
 
 const RootListener = () => {

@@ -32,9 +32,9 @@ const persistConfig = {
     storage,
 };
 
-interface AuthState {
+export interface AuthState {
     userToken: string | null;
-    user: Obejct | null;
+    user: object | null;
     loading: boolean;
     error: string | null;
 }

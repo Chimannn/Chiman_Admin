@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Card from "@/components/card";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { Row, Col, message, Upload, Space, Switch, Button, Form, Input } from "antd";
-import type { GetProp, UploadProps } from "antd";
+import type { GetProp, UploadProps, FieldType } from "antd";
 import useTheme from "@/theme/use-theme";
 import { useSelector } from "react-redux";
 import { faker } from "@faker-js/faker";
@@ -72,7 +72,7 @@ const GeneralTab = () => {
     };
 
     return (
-        <Row gutter={[16.16]}>
+        <Row gutter={[16, 16]}>
             <Col span={24} lg={8}>
                 <Card className="upload-card">
                     <Upload

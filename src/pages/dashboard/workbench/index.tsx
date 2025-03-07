@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import apiClient from "@/api/apiClient";
 import { Row, Col, Space } from "antd";
 

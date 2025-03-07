@@ -1,3 +1,5 @@
+import { BasicStatus, PermissionType } from "@/types/enum";
+
 export interface Permission {
     id: string;
     parentId: string;
