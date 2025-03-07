@@ -1,14 +1,12 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { faker } from "@faker-js/faker";
+import { USER_LIST } from "../assets";
 
 module.exports = (req: VercelRequest, res: VercelResponse) => {
     const { username, password } = req.body;
-    const DEFAULT_USER = {
-        username: "admin",
-        password: "admin",
-    };
+    const user = USER_LIST.find((user) => user.username == username);
 
-    if (DEFAULT_USER.username !== username || DEFAULT_USER.password !== password) {
+    if (!user || user.password !== password) {
         res.status(200).json({
             code: -1,
             message: "Incorrect username or password.",
