@@ -2,7 +2,7 @@ import { VercelRequest, VercelResponse } from "@vercel/node";
 import { faker } from "@faker-js/faker";
 
 module.exports = (req: VercelRequest, res: VercelResponse) => {
-    const { username, password } = req.query;
+    const { username, password } = req.body;
     const user = { username: "admin", password: "admin" };
 
     if (!user || user.username !== username || user.password !== password) {
