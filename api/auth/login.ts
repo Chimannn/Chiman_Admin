@@ -1,11 +1,12 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { faker } from "@faker-js/faker";
-export default function handler(req: VercelRequest, res: VercelResponse) {
+
+module.exports = (req: VercelRequest, res: VercelResponse) => {
     const { username, password } = req.query;
     const user = { username: "admin", password: "admin" };
 
     if (!user || user.username !== username || user.password !== password) {
-        return res.status(200).json({
+        res.status(200).json({
             code: -1,
             message: "Incorrect username or password.",
         });
@@ -18,4 +19,4 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
             token: faker.string.uuid(),
         },
     });
-}
+};
