@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { createBrowserRouter, Navigate, RouterProvider, Outlet } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
 
-import Layout from "@/Layout/dashboard";
+import Layout from "@/layout/dashboard";
 import type { AppRouteObject } from "@/types/router";
 import PageError from "@/pages/sys/error/PageError";
 import Page404 from "@/pages/sys/error/Page404";
