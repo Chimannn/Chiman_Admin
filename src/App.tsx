@@ -9,6 +9,7 @@ import { ThemeProvider } from "./theme/theme-provider";
 import { Toaster } from "sonner";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Logo } from "@/assets/react.svg";
 function App() {
     return (
         <HelmetProvider>
@@ -20,6 +21,7 @@ function App() {
                             <ThemeProvider>
                                 <Helmet>
                                     <title>Chiman Admin</title>
+                                    <link rel="icon" href={Logo} />
                                 </Helmet>
                                 <AppRouter />
                                 <Toaster richColors />
