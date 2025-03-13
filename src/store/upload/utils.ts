@@ -9,7 +9,8 @@ interface UploadConfig {
     progressHandler: (index: number, percent: number) => void;
 }
 const initFileUpload = async (file: File, fileHash) => {
-    const { data } = await axios.post("/api/upload?type=init", {
+    const { data } = await axios.post("/api/upload/init", {
+        // const { data } = await axios.post("/api/upload?type=init", {
         fileName: file.name,
         fileSize: file.size,
         fileHash: fileHash,
@@ -19,7 +20,8 @@ const initFileUpload = async (file: File, fileHash) => {
 };
 
 const fetchUploadedChunks = async (uploadId: string) => {
-    const { data } = await axios.get<number[]>(`/api/upload?type=chunks&uploadId=${uploadId}`);
+    const { data } = await axios.get<number[]>(`/api/upload/chunks/${uploadId}`);
+    // const { data } = await axios.get<number[]>(`/api/upload?type=chunks&uploadId=${uploadId}`);
     return new Set(data);
 };
 
@@ -63,7 +65,8 @@ const uploadChunkWithRetry = async (config): Promise<void> => {
 const uploadSingleChunk = async ({ file, uploadId, chunk, chunkSize, progressHandler }) => {
     const formData = createChunkFormData(file, chunk, chunkSize);
 
-    await axios.post(`/api/upload?type=upload&uploadId=${uploadId}`, formData, {
+    await axios.post(`/api/upload/${uploadId}`, formData, {
+        // await axios.post(`/api/upload?type=upload&uploadId=${uploadId}`, formData, {
         onUploadProgress: (progress) => {
             const percent = Math.round((progress.loaded / progress.total) * 100);
             progressHandler(chunk.index, percent);

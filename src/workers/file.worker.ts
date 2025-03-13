@@ -13,7 +13,7 @@ const processChunks = async (file: File, chunkSize: number) => {
         const buffer = await chunk.arrayBuffer(); // 转换为ArrayBuffer
 
         spark.append(buffer);
-        chunkHashes.push(SparkMD5.ArrayBuffer.hash(buffer));
+        chunkHashes.push(SparkMD5.ArrayBuffer.hash(buffer)); // 分片哈希
 
         self.postMessage({
             type: "CHUNK_PROGRESS",
@@ -25,7 +25,7 @@ const processChunks = async (file: File, chunkSize: number) => {
     }
 
     return {
-        fileHash: spark.end(),
+        fileHash: spark.end(), // 全量哈希
         chunkHashes,
         chunks: Array.from({ length: chunks }, (_, i) => ({
             index: i,

@@ -33,13 +33,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         }
         case "upload": {
             // const busboy = Busboy({ headers: req.headers });
-            // const uploadId = query.uploadId;
+            const uploadId = query.uploadId;
             // const index = query.index;
             // vercel funcions 无法持久化存储，这里虚拟返回
-            // const upload = uploads.get(uploadId);
-            // if (!upload) {
-            //     res.status(404).end();
-            // }
+            const upload = uploads.get(uploadId);
+            if (!upload) {
+                res.status(404).end();
+            }
 
             // upload.chunks.add(index);
             res.status(200).send({

@@ -20,7 +20,7 @@ const initialState: UploadState = {
     status: "idle",
 };
 
-const CHUNK_SIZE = 5 * 1024 * 1024; // 5MB
+const CHUNK_SIZE = 1024 * 1024; // 1MB
 const MAX_CONCURRENT = 3; // 最大并发数
 
 export const startUpload = createAsyncThunk("upload/start", async (file: File, { dispatch }) => {
