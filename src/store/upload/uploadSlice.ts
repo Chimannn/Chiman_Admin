@@ -22,6 +22,7 @@ const initialState: UploadState = {
 
 const CHUNK_SIZE = 1024 * 1024; // 1MB
 const MAX_CONCURRENT = 3; // 最大并发数
+const MAX_RETRY = 3; // 最大重传次数
 
 export const startUpload = createAsyncThunk("upload/start", async (file: File, { dispatch }) => {
     try {
@@ -57,19 +58,33 @@ const initWorker = (file: File, dispatch) => {
     });
 };
 
-const startFileUpload = async ({ file, dispatch, fileHash, chunks }) => {
+const startFileUpload = async (
+    { file, dispatch, fileHash, chunks },
+    retryAttempt = 0,
+    corruptedChunks: number[] = [],
+    uploadId = null
+) => {
+    const chunksToUpload =
+        corruptedChunks.length > 0
+            ? chunks.filter((chunk) => corruptedChunks.includes(chunk.index))
+            : chunks; // 如果有损坏的分片，只上传损坏的分片，否则上传所有分片
+
     // 初始化上传
-    const { uploadId, exist } = await initFileUpload(file, fileHash);
-    if (exist) {
+    const res = await initFileUpload(file, fileHash, uploadId);
+    if (res.exist) {
         console.log("秒传成功！");
         return { status: "秒传成功" };
+    } else {
+        uploadId = res.uploadId;
     }
 
     // 获取已上传分片
     const uploadedChunks = await fetchUploadedChunks(uploadId);
+    const pendingChunks = chunksToUpload.filter(
+        (chunk) => !uploadedChunks.some((item) => item.index == chunk.index)
+    );
 
     // 并行上传
-    const pendingChunks = chunks.filter((chunk) => !uploadedChunks.has(chunk.index));
     await executeParallelUpload({
         file,
         uploadId,
@@ -80,7 +95,18 @@ const startFileUpload = async ({ file, dispatch, fileHash, chunks }) => {
     });
 
     // 完成上传
-    return await completeUpload(uploadId);
+    const completeResult = await completeUpload(uploadId);
+    if (completeResult.status === "retry") {
+        if (retryAttempt >= MAX_RETRY) {
+            throw new Error(`分片重传超过最大次数（${MAX_RETRY}）`);
+        }
+        return startFileUpload(
+            { file, dispatch, fileHash, chunks },
+            retryAttempt + 1,
+            completeResult.corruptedChunks
+        );
+    }
+    return { status: "上传完成", url: completeResult.url };
 };
 
 const uploadSlice = createSlice({

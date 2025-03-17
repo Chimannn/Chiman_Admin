@@ -87,11 +87,26 @@ const createChunkFormData = (file: File, chunk: ChunkMeta, chunkSize: number): F
 };
 
 const completeUpload = async (uploadId: string) => {
-    const { data } = await axios.post(`/api/upload/complete/${uploadId}`);
-    return {
-        status: "上传完成",
-        url: data.url,
-    };
+    try {
+        const res = await axios.post(`/api/upload/complete/${uploadId}`);
+        return {
+            status: "上传完成",
+            url: res.data.url,
+        };
+    } catch (error) {
+        if (error.response?.data?.error === "分片传递不完整") {
+            return {
+                status: "retry" as const,
+                corruptedChunks: error.response.data.corruptedChunks as number[],
+            };
+        } else {
+            return {
+                status: "上传失败",
+                url: null,
+            };
+        }
+        throw error;
+    }
 };
 
 export { initFileUpload, fetchUploadedChunks, executeParallelUpload, completeUpload };
