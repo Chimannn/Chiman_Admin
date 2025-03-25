@@ -395,7 +395,7 @@ const OTHERS_PERMISSION = [
         type: PermissionType.MENU,
         route: "/label",
         newFeature: true,
-        component: "/sys/others/blank.tsx",
+        component: "/sys/others/label/index.tsx",
     },
     {
         id: "5733704222120995",
