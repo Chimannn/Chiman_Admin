@@ -52,6 +52,7 @@
         "@types/spark-md5": "^3.0.5",
         "@vitejs/plugin-react-swc": "^3.5.0",
         "concurrently": "^9.1.2",
+        "cssnano": "^7.0.6",
         "eslint": "^9.17.0",
         "eslint-config-prettier": "^10.0.1",
         "eslint-plugin-prettier": "^5.2.3",
@@ -60,15 +61,21 @@
         "globals": "^15.14.0",
         "msw": "^2.7.0",
         "nodemon": "^3.1.9",
+        "postcss-preset-env": "^10.1.6",
         "prettier": "^3.4.2",
+        "rollup-plugin-visualizer": "^5.14.0",
         "ts-node": "^10.9.2",
         "typescript": "~5.6.2",
         "typescript-eslint": "^8.18.2",
-        "vite": "^6.0.5"
+        "vite": "^6.0.5",
+        "vite-plugin-imagemin": "^0.6.1"
     },
     "msw": {
         "workerDirectory": [
             "public"
         ]
+    },
+    "resolutions": {
+        "bin-wrapper": "npm:bin-wrapper-china"
     }
 }

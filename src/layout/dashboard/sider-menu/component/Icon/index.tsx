@@ -1,10 +1,32 @@
 import React from "react";
-import * as Icons from "@ant-design/icons";
+import {
+    HomeOutlined,
+    BarChartOutlined,
+    AreaChartOutlined,
+    RadarChartOutlined,
+    RiseOutlined,
+    WindowsOutlined,
+    CloseSquareOutlined,
+    AlignCenterOutlined,
+    ScissorOutlined,
+} from "@ant-design/icons";
 import "./index.scss";
 
 interface IconProps {
     icon: string;
 }
+
+const Icons = {
+    HomeOutlined,
+    BarChartOutlined,
+    AreaChartOutlined,
+    RadarChartOutlined,
+    RiseOutlined,
+    WindowsOutlined,
+    CloseSquareOutlined,
+    AlignCenterOutlined,
+    ScissorOutlined,
+};
 
 const Icon: React.FC<IconProps> = ({ icon }) => {
     const AntIcon = Icons[icon];
