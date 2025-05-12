@@ -26,24 +26,45 @@ const fetchUploadedChunks = async (uploadId: string) => {
 };
 
 const executeParallelUpload = async (config: UploadConfig) => {
-    const queue: Promise<void>[] = [];
+    const executing = new Set<Promise<void>>();
+    const chunks = [...config.chunks];
 
-    for (const chunk of config.chunks) {
-        const task = uploadChunkWithRetry({
-            ...config,
-            chunk,
-            retries: 3, // 最大重试次数
-        });
-
-        queue.push(task);
-
-        if (queue.length >= config.concurrency) {
-            await Promise.all(queue);
-            queue.length = 0; // 清空已完成队列
+    while (chunks.length > 0) {
+        while (executing.size < config.concurrency && chunks.length > 0) {
+            const chunk = chunks.shift()!;
+            const task = uploadChunkWithRetry({
+                ...config,
+                chunk,
+                retries: 3,
+            }).finally(() => {
+                executing.delete(task);
+            });
+            executing.add(task);
+        }
+        if (executing.size > 0) {
+            await Promise.race(executing);
         }
     }
+    await Promise.all(executing); // 处理剩余任务
 
-    await Promise.all(queue); // 处理剩余任务
+    // const queue: Promise<void>[] = [];
+
+    // for (const chunk of config.chunks) {
+    //     const task = uploadChunkWithRetry({
+    //         ...config,
+    //         chunk,
+    //         retries: 3, // 最大重试次数
+    //     });
+
+    //     queue.push(task);
+
+    //     if (queue.length >= config.concurrency) {
+    //         await Promise.all(queue);
+    //         queue.length = 0; // 清空已完成队列
+    //     }
+    // }
+
+    // await Promise.all(queue); // 处理剩余任务
 };
 
 // 带重试机制的分片上传
